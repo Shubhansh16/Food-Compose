@@ -11,10 +11,12 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,13 +26,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun TabLayout(
     selectedIndex:Int =0,
     items: List<Pair<String,@Composable ()->Unit>>,
-    onTabClick:(Int)-> Unit
+    onTabClick:(Int)-> Unit,
+    textHeight: Dp = 35.dp,
+    indicatorPadding:PaddingValues = PaddingValues()
 ){
     Column {
      Row (modifier = Modifier.fillMaxWidth(),
@@ -40,7 +45,7 @@ fun TabLayout(
            items.forEachIndexed { index, pair->
                Column(
                    modifier = Modifier
-                       .height(35.dp)
+                       .height(textHeight)
                        .fillMaxWidth()
                        .weight(1f)
                        .clickable(
@@ -67,6 +72,7 @@ fun TabLayout(
                                .fillMaxWidth()
                                .clip(CircleShape)
                                .height(3.dp)
+                               .padding(indicatorPadding)
                                .background(MaterialTheme.colorScheme.primary)
                        ) {
 

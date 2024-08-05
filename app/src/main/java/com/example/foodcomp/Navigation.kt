@@ -24,7 +24,7 @@ fun Navigation(){
         composable("home"){
             HomeScreen(navController = navController)
         }
-        composable("home"){
+        composable("food"){
             FoodScreen(navController = navController)
         }
 
